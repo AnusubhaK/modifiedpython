@@ -151,7 +151,7 @@ def readjsonwebform(filpath):
             ClusterInstanceName = field['fieldValue']
             if "children" in field.keys():
                 for Clustertypesfield in field['children']:
-                    if(Clustertypesfield['fieldName'] == "Cluster type" and Clustertypesfield['fieldValue'] == "Workload"):
+                    if(Clustertypesfield['fieldName'] == "Cluster type" and (Clustertypesfield['fieldValue'] == "Workload" or Clustertypesfield['fieldValue'] == "Management")):
                         if "children" in Clustertypesfield.keys():
                             for NodeTypefield in Clustertypesfield['children']:
                                 # Find for Worker nodes
@@ -216,7 +216,7 @@ def readcsvclustercapacity(filpath):
         cluster[2] = math.floor(float(cluster[2]) * ClusterReservedCapacity_Divider) #Excel Col-3 Free CPU, reduce 10% as buffer and round down
         cluster[3] = math.floor(float(cluster[3]) * ClusterReservedCapacity_Divider) #Excel Col-4 Free RAM, reduce 10% as buffer and round down
         cluster[4] = math.floor(float(cluster[4]) * ClusterReservedCapacity_Divider) #Excel Col-5 Free Memory, reduce 10% as buffer and round down
-        #cluster[5] = cluster[5] #Excel Col-6 Datastorev name       
+        cluster[5] = cluster[5] #Excel Col-6 Datastorev name       
 
 
 # Calculate WorkerNode
@@ -281,7 +281,7 @@ def checkclustercapacity(ClusterName,ClusterList, ResultUnallocatedNodes, Worker
                     ClustersRes.update ({"HostName": cluster[1]})                
                     ClustersRes.update ({"AllocatedNode": WorkerNodeName})
                     ClustersRes.update ({"AllocatedNodeCount": NodeCount})
-                    #ClustersRes.update ({"Datastore": cluster[5]})
+                    ClustersRes.update ({"Datastore": cluster[5]})
                     ResultList.append (ClustersRes)
                     print(ClustersRes)
                     cluster[1] = "" # Invalidate so no other Node can be allocated here

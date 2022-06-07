@@ -20,12 +20,14 @@ import csv
 
 # Define global variables for processing
 InputWorkerNodePool = []
+InputMasterNode = []
 InputBusiness = []
 InputClusterCapacity = []
 InputClusterNames = []
 
 # Constant settings
 ClusterReservedCapacity = 10 # Percentage of reserved cluster to leave free for calculation
+MASTERNODE_FROMWEB = 1 # Set to 1 incase the master node calcualtions should be taken from web API, or the below constant is used
 MasterNodeCapacity = [
             {   
                 "Capacity" : 10, # Capacity for <= 10
@@ -135,9 +137,65 @@ def writeresultJSON(filepath):
 def readjsonwebform(filpath):
     filejson = open(filpath,) 
     data = json.load(filejson)
-    InputBusiness.append (data['Business'])
-    for WorkerNode in data['Capacity']['WorkerNodePool']:
-        InputWorkerNodePool.append (WorkerNode)
+    WorkerNode = {}
+    MasterNode = {}
+    #InputBusiness.append (data['Business'])
+
+    #Look for Field Capacity
+    for field in data['categories']:
+        if(field['categoryName'] == "capacity"):
+            capacitydata = field['fields']
+
+    for field in capacitydata:
+        if(field['fieldName'] == "Cluster Instance Name"):
+            ClusterInstanceName = field['fieldValue']
+            if "children" in field.keys():
+                for Clustertypesfield in field['children']:
+                    if(Clustertypesfield['fieldName'] == "Cluster type" and Clustertypesfield['fieldValue'] == "Workload"):
+                        if "children" in Clustertypesfield.keys():
+                            for NodeTypefield in Clustertypesfield['children']:
+                                # Find for Worker nodes
+                                if(NodeTypefield['fieldName'] == "Node Pool Type" and NodeTypefield['fieldValue'] == "Worker"):
+                                    if "children" in NodeTypefield.keys():
+                                        for NodePoolfield in NodeTypefield['children']: 
+                                            # Loop through all node pools and extract data 
+                                            if(NodePoolfield['fieldName'] == "Node Pool"):
+                                                if "children" in NodePoolfield.keys():
+                                                    WorkerNode.clear
+                                                    Storage1 = 0
+                                                    Storage2 = 0
+                                                    for Nodes in NodePoolfield['children']:
+                                                        if(Nodes['fieldName'] == "Number of Replica"): WorkerNode.update ({"Nodecount": int(Nodes['fieldValue'])})
+                                                        if(Nodes['fieldName'] == "Node Pool Name"): WorkerNode.update ({"NodeName": Nodes['fieldValue']})
+                                                        if(Nodes['fieldName'] == "Node Pool CPU (vCPUs)"): WorkerNode.update ({"NodeCPU": int(Nodes['fieldValue'])})
+                                                        if(Nodes['fieldName'] == "Node Memory (MB)"): WorkerNode.update ({"NodeRAM": int(Nodes['fieldValue'])/1024})
+                                                        if(Nodes['fieldName'] == "Node Ephemeral Storage (GBi)"): Storage1 = int(Nodes['fieldValue'])
+                                                        if(Nodes['fieldName'] == "Node Persistent Storage (GBi)"): Storage2 = int(Nodes['fieldValue'])
+                                                    WorkerNode.update ({"NodeStorage": Storage1 + Storage2})
+                                                    InputWorkerNodePool.append (WorkerNode)
+                                #############################################################################################                                                    
+                                # Find for Master nodes
+                                if(NodeTypefield['fieldName'] == "Node Pool Type" and NodeTypefield['fieldValue'] == "Master"):
+                                    if "children" in NodeTypefield.keys():
+                                        for NodePoolfield in NodeTypefield['children']: 
+                                            # Loop through all node pools and extract data 
+                                            if(NodePoolfield['fieldName'] == "Node Pool"):
+                                                if "children" in NodePoolfield.keys():
+                                                    MasterNode.clear
+                                                    Storage1 = 0
+                                                    Storage2 = 0
+                                                    for Nodes in NodePoolfield['children']:
+                                                        if(Nodes['fieldName'] == "Number of Replica"): MasterNode.update ({"ReqMasterNodeCnt": int(Nodes['fieldValue'])})
+                                                        if(Nodes['fieldName'] == "Node Pool Name"): MasterNode.update ({"NodeName": Nodes['fieldValue']})
+                                                        if(Nodes['fieldName'] == "Node Pool CPU (vCPUs)"): MasterNode.update ({"CPU": int(Nodes['fieldValue'])})
+                                                        if(Nodes['fieldName'] == "Node Memory (MB)"): MasterNode.update ({"RAM": int(Nodes['fieldValue'])/1024})
+                                                        if(Nodes['fieldName'] == "Node Ephemeral Storage (GBi)"): Storage1 = int(Nodes['fieldValue'])
+                                                        if(Nodes['fieldName'] == "Node Persistent Storage (GBi)"): Storage2 = int(Nodes['fieldValue'])
+                                                    MasterNode.update ({"Storage": Storage1 + Storage2})
+                                                    InputMasterNode.append (MasterNode)                                                    
+
+    print(InputWorkerNodePool)
+    print(InputMasterNode)
     filejson.close()
 
 
@@ -158,7 +216,7 @@ def readcsvclustercapacity(filpath):
         cluster[2] = math.floor(float(cluster[2]) * ClusterReservedCapacity_Divider) #Excel Col-3 Free CPU, reduce 10% as buffer and round down
         cluster[3] = math.floor(float(cluster[3]) * ClusterReservedCapacity_Divider) #Excel Col-4 Free RAM, reduce 10% as buffer and round down
         cluster[4] = math.floor(float(cluster[4]) * ClusterReservedCapacity_Divider) #Excel Col-5 Free Memory, reduce 10% as buffer and round down
-        cluster[5] = cluster[5] #Excel Col-6 Datastorev name       
+        #cluster[5] = cluster[5] #Excel Col-6 Datastorev name       
 
 
 # Calculate WorkerNode
@@ -172,15 +230,22 @@ def calculate_workernode():
         ResultCalculations_WN[0]['RAM'] = ResultCalculations_WN[0]['RAM'] + (WorkerNode['Nodecount'] * WorkerNode['NodeRAM'])
         ResultCalculations_WN[0]['Storage'] = ResultCalculations_WN[0]['Storage'] + (WorkerNode['Nodecount'] * WorkerNode['NodeStorage'])
     
-    # Calculate required Master Node from required workernodes
-    for MasterNodeConst in MasterNodeCapacity:
-        if (ResultCalculations_WN[0]['WorkerNodes'] <= MasterNodeConst['Capacity']):
-            ResultCalculations_WN[1]['MasterNodes'] = MasterNodeConst['ReqMasterNodeCnt']
-            ResultCalculations_WN[1]['CPU'] = MasterNodeConst['CPU']
-            ResultCalculations_WN[1]['RAM'] = MasterNodeConst['RAM']
-            ResultCalculations_WN[1]['Storage'] = MasterNodeConst['Storage']
-            break
-    
+    if(MASTERNODE_FROMWEB == 1): #Settings if the master node calculation should be taken from the web API JSON
+        ResultCalculations_WN[1]['MasterNodes'] = InputMasterNode[0]['ReqMasterNodeCnt']
+        ResultCalculations_WN[1]['CPU'] = InputMasterNode[0]['CPU']
+        ResultCalculations_WN[1]['RAM'] = InputMasterNode[0]['RAM']
+        ResultCalculations_WN[1]['Storage'] =  InputMasterNode[0]['Storage']
+    else:
+        # Calculate required Master Node from required workernodes based on internal constant
+        for MasterNodeConst in MasterNodeCapacity:
+            if (ResultCalculations_WN[0]['WorkerNodes'] <= MasterNodeConst['Capacity']):
+                ResultCalculations_WN[1]['MasterNodes'] = MasterNodeConst['ReqMasterNodeCnt']
+                ResultCalculations_WN[1]['CPU'] = MasterNodeConst['CPU']
+                ResultCalculations_WN[1]['RAM'] = MasterNodeConst['RAM']
+                ResultCalculations_WN[1]['Storage'] = MasterNodeConst['Storage']
+                break
+
+
     # Calculate consolidated net capacity requirement
     ResultCalculations_WN[2]['TotalReqNodes'] = ResultCalculations_WN[0]['WorkerNodes'] + ResultCalculations_WN[1]['MasterNodes']
     ResultCalculations_WN[2]['CPU'] = ResultCalculations_WN[0]['CPU'] + ResultCalculations_WN[1]['CPU']
@@ -216,7 +281,7 @@ def checkclustercapacity(ClusterName,ClusterList, ResultUnallocatedNodes, Worker
                     ClustersRes.update ({"HostName": cluster[1]})                
                     ClustersRes.update ({"AllocatedNode": WorkerNodeName})
                     ClustersRes.update ({"AllocatedNodeCount": NodeCount})
-                    ClustersRes.update ({"Datastore": cluster[5]})
+                    #ClustersRes.update ({"Datastore": cluster[5]})
                     ResultList.append (ClustersRes)
                     print(ClustersRes)
                     cluster[1] = "" # Invalidate so no other Node can be allocated here

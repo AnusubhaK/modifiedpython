@@ -1,0 +1,24 @@
+{
+    "NodeAllocation": [
+        {
+            "ClusterName": "RADIO",
+            "FreeCPU": 98.0
+        }
+    ],
+    "MasterNodeAllocation": [
+        {
+            "ClusterName": "RADIO",
+            "HostName": "esx-05",
+            "AllocatedNode": "MasterNode",
+            "AllocatedNodeCount": 0
+        }
+    ],
+    "WorkerNodeAllocation": [
+        {
+            "ClusterName": "RADIO",
+            "HostName": "esx-06",
+            "AllocatedNode": "np1",
+            "AllocatedNodeCount": 0
+        }
+    ]
+}

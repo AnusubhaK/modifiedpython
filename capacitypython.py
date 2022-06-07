@@ -22,11 +22,12 @@ def fetchjsonfromweb(web_pass, nf, resultfile):
     url3="https://tele-asset-api.herokuapp.com/jenkinsapi/assets"
     cluster3 = requests.get(url3, headers=headers, verify=False)
     data2 = cluster3.json()
+    nf_id = ""
     for i in range(len(data2['items'])):
         if (data2['items'][i]['nfName']) == nf:
             nf_id=(data2['items'][i]['assetId'])
 
-    if(nf_id):
+    if(nf_id != ""):
         url2="https://tele-asset-api.herokuapp.com/jenkinsapi/assets/"+str(nf_id)
         cluster2 = requests.get(url2, headers=headers, verify=False)
         web_input = cluster2.json()

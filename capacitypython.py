@@ -1,51 +1,51 @@
 import requests
 import json
-import ruamel.yaml
-import sys
-import time
-import base64
+import argparse
 
-from jinja2 import Environment, FileSystemLoader
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-file_loader = FileSystemLoader('/prd/API/templates')
-env = Environment(extensions=['jinja2.ext.loopcontrols'],loader=file_loader,trim_blocks=True)
 
-web_pass = sys.argv[1]
-nf = sys.argv[2]
+# Fetch from WebForm 
+def fetchjsonfromweb(web_pass, nf, resultfile):
+    url = "https://tele-asset-api.herokuapp.com/login"
+    headers={'Content-Type': 'application/json'}
+    data = {
+        "usernameOrEmail": "admin",
+        "password": web_pass
+    }
 
-message_bytes = clspass.encode('ascii')
-base64_bytes = base64.b64encode(message_bytes)
-clspass_en = base64_bytes.decode('ascii')
+    response = requests.post(url, json=data, headers=headers, verify=False)
+    token = response.json()['accessToken']
+    token = "Bearer "+ token
+    headers={'Authorization': token, 'accept': 'application/json'}
 
-######## Fetch from WebForm #############
-url = "https://tele-asset-api.herokuapp.com/login"
-headers={'Content-Type': 'application/json'}
-data = {
-    "usernameOrEmail": "admin",
-    "password": web_pass
-}
+    url3="https://tele-asset-api.herokuapp.com/jenkinsapi/assets"
+    cluster3 = requests.get(url3, headers=headers, verify=False)
+    data2 = cluster3.json()
+    for i in range(len(data2['items'])):
+        if (data2['items'][i]['nfName']) == nf:
+            nf_id=(data2['items'][i]['assetId'])
 
-response = requests.post(url, json=data, headers=headers, verify=False)
-token = response.json()['accessToken']
-token = "Bearer "+ token
-headers={'Authorization': token, 'accept': 'application/json'}
+    if(nf_id):
+        url2="https://tele-asset-api.herokuapp.com/jenkinsapi/assets/"+str(nf_id)
+        cluster2 = requests.get(url2, headers=headers, verify=False)
+        web_input = cluster2.json()
+        with open(resultfile, "w") as outfile:
+            json_object = json.dumps(web_input, indent = 4)
+            outfile.write(json_object)
+        print("Info: JSON Export complete..")
+    else:
+        print("Error: Provided NF does does not match with the available results..")
 
-url3="https://tele-asset-api.herokuapp.com/jenkinsapi/assets"
-cluster3 = requests.get(url3, headers=headers, verify=False)
-data2 = cluster3.json()
-with open("/tmp/Anu/A.json", "w") as outfile:
-    json_object = json.dumps(data2, indent = 4)
-    outfile.write(json_object)
-for i in range(len(data2['items'])):
-    if (data2['items'][i]['nfName']) == nf:
-        nf_id=(data2['items'][i]['assetId'])
+if __name__ == "__main__":
 
-url2="https://tele-asset-api.herokuapp.com/jenkinsapi/assets/"+str(nf_id)
-cluster2 = requests.get(url2, headers=headers, verify=False)
-web_input = cluster2.json()
-with open("/tmp/Anu/B.json", "w") as outfile:
-    json_object = json.dumps(web_input, indent = 4)
-    outfile.write(json_object)
+    # configuration of command line interface:
+    parser = argparse.ArgumentParser(description='Script to extract inputs from webAPI')
+    parser.add_argument('-p', '--password',required=True, help="PASSWORD for web")
+    parser.add_argument('-n', '--nfid',required=True, help="input NFID")
+    parser.add_argument('-o', '--outjson',required=True, help="output result JSON file with full path from web")
+    args = parser.parse_args()
+    args_dict = vars(args)
 
-print("Script processing complete...")
+    fetchjsonfromweb(args.password, args.nfid, args.outjson)
+    print("Script processing complete...")

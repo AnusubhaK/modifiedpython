@@ -1,0 +1,495 @@
+{
+    "assetId": 15,
+    "nfName": "PCF_worklaod",
+    "type": "CNF",
+    "createdBy": "admin",
+    "createdOn": "2022-05-31T06:02:18.000+00:00",
+    "updatedBy": "qatest",
+    "updatedOn": "2022-06-01T15:54:30.000+00:00",
+    "categories": [
+        {
+            "categoryId": 1,
+            "categoryName": "Business",
+            "fields": [
+                {
+                    "fieldId": 19615,
+                    "fieldName": "NF Name",
+                    "fieldValue": "PCF_worklaod",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19616,
+                    "fieldName": "NF Capacity",
+                    "fieldValue": "200000",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19617,
+                    "fieldName": "Type",
+                    "fieldValue": "CNF",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19618,
+                    "fieldName": "NF Capacity Unit",
+                    "fieldValue": "sessions",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19619,
+                    "fieldName": "NF Version",
+                    "fieldValue": "1.12.1",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19620,
+                    "fieldName": "Vendor",
+                    "fieldValue": "Oracle",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19621,
+                    "fieldName": "Form Status",
+                    "fieldValue": "Stable",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19622,
+                    "fieldName": "Environment",
+                    "fieldValue": "TestLab",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19623,
+                    "fieldName": "Version",
+                    "fieldValue": "1",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19624,
+                    "fieldName": "Description",
+                    "fieldValue": "PCF Deployment used in Telef Global Lab",
+                    "isCustom": false
+                }
+            ]
+        },
+        {
+            "categoryId": 2,
+            "categoryName": "capacity",
+            "fields": [
+                {
+                    "fieldId": 19625,
+                    "fieldName": "Template Name",
+                    "fieldValue": "pcf_template",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19626,
+                    "fieldName": "Template Description",
+                    "fieldValue": "Template for PCF test deployment",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19627,
+                    "fieldName": "Cluster Instance Name",
+                    "fieldValue": "pcfinstancewk",
+                    "isCustom": false,
+                    "children": [
+                        {
+                            "fieldId": 19628,
+                            "fieldName": "Cluster type",
+                            "fieldValue": "Workload",
+                            "isCustom": false,
+                            "children": [
+                                {
+                                    "fieldId": 19629,
+                                    "fieldName": "Node Pool Type",
+                                    "fieldValue": "Master",
+                                    "isCustom": false,
+                                    "children": [
+                                        {
+                                            "fieldId": 19630,
+                                            "fieldName": "Node Pool",
+                                            "isCustom": false,
+                                            "children": [
+                                                {
+                                                    "fieldId": 19631,
+                                                    "fieldName": "Number of Replica",
+                                                    "fieldValue": "1",
+                                                    "isCustom": false
+                                                },
+                                                {
+                                                    "fieldId": 19632,
+                                                    "fieldName": "Node Pool Name",
+                                                    "fieldValue": "master",
+                                                    "isCustom": false
+                                                },
+                                                {
+                                                    "fieldId": 19633,
+                                                    "fieldName": "Node Pool CPU (vCPUs)",
+                                                    "fieldValue": "4",
+                                                    "isCustom": false
+                                                },
+                                                {
+                                                    "fieldId": 19634,
+                                                    "fieldName": "Node Memory (MB)",
+                                                    "fieldValue": "8192",
+                                                    "isCustom": false
+                                                },
+                                                {
+                                                    "fieldId": 19635,
+                                                    "fieldName": "Node Ephemeral Storage (GBi)",
+                                                    "fieldValue": "50",
+                                                    "isCustom": false
+                                                },
+                                                {
+                                                    "fieldId": 19636,
+                                                    "fieldName": "Node Persistent Storage (GBi)",
+                                                    "fieldValue": "0",
+                                                    "isCustom": false
+                                                },
+                                                {
+                                                    "fieldId": 19637,
+                                                    "fieldName": "Network",
+                                                    "isCustom": false
+                                                },
+                                                {
+                                                    "fieldId": 19638,
+                                                    "fieldName": "Label",
+                                                    "isCustom": false
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "fieldId": 19639,
+                                    "fieldName": "Node Pool Type",
+                                    "fieldValue": "Worker",
+                                    "isCustom": false,
+                                    "children": [
+                                        {
+                                            "fieldId": 19640,
+                                            "fieldName": "Node Pool",
+                                            "isCustom": false,
+                                            "children": [
+                                                {
+                                                    "fieldId": 19641,
+                                                    "fieldName": "Number of Replica",
+                                                    "fieldValue": "1",
+                                                    "isCustom": false
+                                                },
+                                                {
+                                                    "fieldId": 19642,
+                                                    "fieldName": "Node Pool Name",
+                                                    "fieldValue": "np1",
+                                                    "isCustom": false
+                                                },
+                                                {
+                                                    "fieldId": 19643,
+                                                    "fieldName": "Node Pool CPU (vCPUs)",
+                                                    "fieldValue": "4",
+                                                    "isCustom": false
+                                                },
+                                                {
+                                                    "fieldId": 19644,
+                                                    "fieldName": "Node Memory (MB)",
+                                                    "fieldValue": "8192",
+                                                    "isCustom": false
+                                                },
+                                                {
+                                                    "fieldId": 19645,
+                                                    "fieldName": "Node Ephemeral Storage (GBi)",
+                                                    "fieldValue": "50",
+                                                    "isCustom": false
+                                                },
+                                                {
+                                                    "fieldId": 19646,
+                                                    "fieldName": "Node Persistent Storage (GBi)",
+                                                    "fieldValue": "0",
+                                                    "isCustom": false
+                                                },
+                                                {
+                                                    "fieldId": 19647,
+                                                    "fieldName": "Network",
+                                                    "keyValueList": [
+                                                        {
+                                                            "key": "LABEL",
+                                                            "value": "VLAN"
+                                                        }
+                                                    ],
+                                                    "isCustom": false
+                                                },
+                                                {
+                                                    "fieldId": 19648,
+                                                    "fieldName": "Label",
+                                                    "keyValueList": [
+                                                        {
+                                                            "key": "Worker",
+                                                            "value": "true"
+                                                        }
+                                                    ],
+                                                    "isCustom": false
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "categoryId": 3,
+            "categoryName": "dependency",
+            "fields": [
+                {
+                    "fieldId": 19649,
+                    "fieldName": "CPU Manager Policy",
+                    "fieldValue": "default",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19655,
+                    "fieldName": "Kernel Version",
+                    "fieldValue": "4.19.189-5.ph3",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19656,
+                    "fieldName": "Kernel Type",
+                    "fieldValue": "Non-RT",
+                    "isCustom": false,
+                    "parameters": [
+                        {
+                            "key": "nosoftlockup",
+                            "value": ""
+                        },
+                        {
+                            "key": "noswap",
+                            "value": ""
+                        },
+                        {
+                            "key": "softlockup_panic",
+                            "value": "0"
+                        },
+                        {
+                            "key": "pcie_aspm.policy",
+                            "value": "default"
+                        },
+                        {
+                            "key": "intel_idle.max_cstate",
+                            "value": ""
+                        },
+                        {
+                            "key": "mce",
+                            "value": ""
+                        },
+                        {
+                            "key": "fsck.mod",
+                            "value": ""
+                        },
+                        {
+                            "key": "default_hugepagesz",
+                            "value": ""
+                        },
+                        {
+                            "key": "hugepagesz",
+                            "value": ""
+                        },
+                        {
+                            "key": "hugepages",
+                            "value": "0"
+                        },
+                        {
+                            "key": "isolcpus",
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "fieldId": 19676,
+                    "fieldName": "additional_config",
+                    "fieldValue": "NO",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19681,
+                    "fieldName": "latency_sensitivity",
+                    "fieldValue": "Low",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19684,
+                    "fieldName": "Primary CNI",
+                    "fieldValue": "calico",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19685,
+                    "fieldName": "Primary CNI version",
+                    "fieldValue": "3.16.5",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19686,
+                    "fieldName": "Secondary CNI",
+                    "fieldValue": "0",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19687,
+                    "fieldName": "Secondary CNI version",
+                    "fieldValue": "0",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19688,
+                    "fieldName": "CSI",
+                    "fieldValue": "vsphere-csi",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19689,
+                    "fieldName": "Storage Class",
+                    "fieldValue": "vsphere-sc",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19690,
+                    "fieldName": "isDefault",
+                    "fieldValue": "true",
+                    "isCustom": false
+                }
+            ]
+        },
+        {
+            "categoryId": 4,
+            "categoryName": "platform",
+            "fields": [
+                {
+                    "fieldId": 19693,
+                    "fieldName": "Kubernetes version",
+                    "fieldValue": " v1.21.2+vmware.1",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19694,
+                    "fieldName": "Kubernetes Min Version",
+                    "fieldValue": " v1.21.2+vmware.1",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19695,
+                    "fieldName": "Kubernetes API Version",
+                    "fieldValue": " v1.20.5",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19696,
+                    "fieldName": "Helm Version",
+                    "fieldValue": "3.1.1",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19706,
+                    "fieldName": "Prometheus Version",
+                    "fieldValue": "11.0.2",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19708,
+                    "fieldName": "Calico Version",
+                    "fieldValue": "3.16.5",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19711,
+                    "fieldName": "Grafana Version",
+                    "fieldValue": "7.0.5",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19712,
+                    "fieldName": "Elasticsearch Version",
+                    "fieldValue": "7.8.0",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19713,
+                    "fieldName": "Kibana Version",
+                    "fieldValue": "7.8.0",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19719,
+                    "fieldName": "metrics-server Version",
+                    "fieldValue": "2.10.0",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19721,
+                    "fieldName": "K8S Operators Version",
+                    "fieldValue": "1.20.5",
+                    "isCustom": false
+                }
+            ]
+        },
+        {
+            "categoryId": 5,
+            "categoryName": "operation",
+            "fields": [
+                {
+                    "fieldId": 19722,
+                    "fieldName": "Actualizar inventarios (CMDB)",
+                    "fieldValue": "NO",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19723,
+                    "fieldName": "Automatic Test Cases For Communication Layer",
+                    "fieldValue": "NO",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19724,
+                    "fieldName": "Automatic Test Cases for VIM/CISM Layer",
+                    "fieldValue": "NO",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19725,
+                    "fieldName": "Automatic Test Cases for the orchestrator",
+                    "fieldValue": "NO",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19726,
+                    "fieldName": "Health Check Automation",
+                    "fieldValue": "NO",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19727,
+                    "fieldName": "Regression / integration / e2e Test",
+                    "fieldValue": "NO",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19728,
+                    "fieldName": "Service Virtualization",
+                    "fieldValue": "NO",
+                    "isCustom": false
+                },
+                {
+                    "fieldId": 19729,
+                    "fieldName": "Blue/green deployment",
+                    "fieldValue": "NO",
+                    "isCustom": false
+                }
+            ]
+        }
+    ]
+}

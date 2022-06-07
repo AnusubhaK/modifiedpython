@@ -1,0 +1,230 @@
+{
+    "total": 25,
+    "items": [
+        {
+            "assetId": 1,
+            "nfName": "NFR1",
+            "type": "VNF",
+            "createdBy": "admin",
+            "createdOn": "2022-04-18T20:16:58.000+00:00",
+            "updatedBy": "qatest",
+            "updatedOn": "2022-05-31T08:01:55.000+00:00"
+        },
+        {
+            "assetId": 2,
+            "nfName": "singlepool",
+            "type": "CNF",
+            "createdBy": "admin",
+            "createdOn": "2022-04-19T06:18:44.000+00:00",
+            "updatedBy": "qatest",
+            "updatedOn": "2022-06-02T16:48:55.000+00:00"
+        },
+        {
+            "assetId": 3,
+            "nfName": "multipool",
+            "type": "CNF",
+            "createdBy": "admin",
+            "createdOn": "2022-04-21T06:33:44.000+00:00",
+            "updatedBy": "admin",
+            "updatedOn": "2022-05-26T07:46:06.000+00:00"
+        },
+        {
+            "assetId": 4,
+            "nfName": "multus",
+            "type": "CNF",
+            "createdBy": "admin",
+            "createdOn": "2022-04-22T10:17:00.000+00:00",
+            "updatedBy": "admin",
+            "updatedOn": "2022-06-04T15:24:03.000+00:00"
+        },
+        {
+            "assetId": 5,
+            "nfName": "singlepool",
+            "type": "CNF",
+            "createdBy": "admin",
+            "createdOn": "2022-04-26T08:34:18.000+00:00",
+            "updatedBy": "admin",
+            "updatedOn": "2022-05-25T14:13:38.000+00:00"
+        },
+        {
+            "assetId": 6,
+            "nfName": "multus",
+            "type": "CNF",
+            "createdBy": "admin",
+            "createdOn": "2022-04-26T08:38:07.000+00:00",
+            "updatedBy": "admin",
+            "updatedOn": "2022-05-26T07:46:05.000+00:00"
+        },
+        {
+            "assetId": 7,
+            "nfName": "multipool",
+            "type": "CNF",
+            "createdBy": "admin",
+            "createdOn": "2022-04-26T08:41:57.000+00:00",
+            "updatedBy": "admin",
+            "updatedOn": "2022-05-26T07:46:02.000+00:00"
+        },
+        {
+            "assetId": 8,
+            "nfName": "CDCT Infra",
+            "type": "CNF",
+            "createdBy": "admin",
+            "createdOn": "2022-05-17T13:52:46.000+00:00",
+            "updatedBy": "admin",
+            "updatedOn": "2022-05-25T07:04:50.000+00:00"
+        },
+        {
+            "assetId": 9,
+            "nfName": "multus",
+            "type": "CNF",
+            "createdBy": "admin",
+            "createdOn": "2022-05-19T10:51:57.000+00:00",
+            "updatedBy": "admin",
+            "updatedOn": "2022-05-25T06:18:52.000+00:00"
+        },
+        {
+            "assetId": 10,
+            "nfName": "For Sofia",
+            "type": "CNF",
+            "createdBy": "admin",
+            "createdOn": "2022-05-26T06:59:41.000+00:00",
+            "updatedBy": "admin",
+            "updatedOn": "2022-05-26T06:59:41.000+00:00"
+        },
+        {
+            "assetId": 11,
+            "nfName": "NRF Tatuape",
+            "type": "CNF",
+            "createdBy": "admin",
+            "createdOn": "2022-05-26T07:35:02.000+00:00",
+            "updatedBy": "admin",
+            "updatedOn": "2022-05-26T10:11:08.000+00:00"
+        },
+        {
+            "assetId": 12,
+            "nfName": "NRF_workload",
+            "type": "CNF",
+            "createdBy": "admin",
+            "createdOn": "2022-05-26T14:44:54.000+00:00",
+            "updatedBy": "admin",
+            "updatedOn": "2022-06-07T06:54:57.000+00:00"
+        },
+        {
+            "assetId": 13,
+            "nfName": "NRF_management",
+            "type": "CNF",
+            "createdBy": "admin",
+            "createdOn": "2022-05-26T18:34:41.000+00:00",
+            "updatedBy": "admin",
+            "updatedOn": "2022-05-31T12:18:54.000+00:00"
+        },
+        {
+            "assetId": 14,
+            "nfName": "PCF_GlobalLab",
+            "type": "CNF",
+            "createdBy": "admin",
+            "createdOn": "2022-05-30T13:37:35.000+00:00",
+            "updatedBy": "admin",
+            "updatedOn": "2022-05-30T13:45:58.000+00:00"
+        },
+        {
+            "assetId": 15,
+            "nfName": "PCF_worklaod",
+            "type": "CNF",
+            "createdBy": "admin",
+            "createdOn": "2022-05-31T06:02:18.000+00:00",
+            "updatedBy": "qatest",
+            "updatedOn": "2022-06-01T15:54:30.000+00:00"
+        },
+        {
+            "assetId": 16,
+            "nfName": "  NF",
+            "type": "CNF",
+            "createdBy": "qatest",
+            "createdOn": "2022-06-02T16:32:07.000+00:00",
+            "updatedBy": "qatest",
+            "updatedOn": "2022-06-03T09:28:46.000+00:00"
+        },
+        {
+            "assetId": 17,
+            "nfName": "Nf tester",
+            "type": "VNF",
+            "createdBy": "qatest",
+            "createdOn": "2022-06-03T04:54:32.000+00:00",
+            "updatedBy": "qatest",
+            "updatedOn": "2022-06-03T05:10:14.000+00:00"
+        },
+        {
+            "assetId": 18,
+            "nfName": "                                    ",
+            "type": "CNF",
+            "createdBy": "qatest",
+            "createdOn": "2022-06-03T05:14:46.000+00:00",
+            "updatedBy": "qatest",
+            "updatedOn": "2022-06-03T07:30:46.000+00:00"
+        },
+        {
+            "assetId": 19,
+            "nfName": "      ",
+            "type": "VNF",
+            "createdBy": "qatest",
+            "createdOn": "2022-06-03T05:52:45.000+00:00",
+            "updatedBy": "qatest",
+            "updatedOn": "2022-06-04T04:15:11.000+00:00"
+        },
+        {
+            "assetId": 20,
+            "nfName": "NF__12",
+            "type": "CNF",
+            "createdBy": "qatest",
+            "createdOn": "2022-06-03T09:40:10.000+00:00",
+            "updatedBy": "qatest",
+            "updatedOn": "2022-06-04T16:15:51.000+00:00"
+        },
+        {
+            "assetId": 21,
+            "nfName": "Telcel",
+            "type": "CNF",
+            "createdBy": "qatest",
+            "createdOn": "2022-06-03T15:55:25.000+00:00",
+            "updatedBy": "admin",
+            "updatedOn": "2022-06-06T11:24:11.000+00:00"
+        },
+        {
+            "assetId": 22,
+            "nfName": "11",
+            "type": "VNF",
+            "createdBy": "qatest",
+            "createdOn": "2022-06-04T16:40:01.000+00:00",
+            "updatedBy": "qatest",
+            "updatedOn": "2022-06-04T16:40:01.000+00:00"
+        },
+        {
+            "assetId": 23,
+            "nfName": "june 6",
+            "type": "CNF",
+            "createdBy": "qatest",
+            "createdOn": "2022-06-06T07:18:28.000+00:00",
+            "updatedBy": "qatest",
+            "updatedOn": "2022-06-06T07:18:28.000+00:00"
+        },
+        {
+            "assetId": 24,
+            "nfName": "77& number ",
+            "type": "CNF",
+            "createdBy": "qatest",
+            "createdOn": "2022-06-06T11:14:29.000+00:00",
+            "updatedBy": "qatest",
+            "updatedOn": "2022-06-06T11:14:29.000+00:00"
+        },
+        {
+            "assetId": 25,
+            "nfName": "New data june 06",
+            "type": "VNF",
+            "createdBy": "qatest",
+            "createdOn": "2022-06-06T15:54:42.000+00:00",
+            "updatedBy": "qatest",
+            "updatedOn": "2022-06-06T15:54:42.000+00:00"
+        }
+    ]
+}

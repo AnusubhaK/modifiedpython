@@ -1,0 +1,41 @@
+{
+    "Business": {
+        "NFName": "SampleNF",
+		"Vendor": "Nokia",
+		"Environment": "Dev",
+		"NFCapacity": 2,
+		"FormID": 101,
+		"FormStatus": "Testing",
+		"Version": "1.1"
+    },
+
+	"Capacity": {
+        "NodeType": "Worker",
+		"WorkerNodePool": [
+			{
+			   "NodeName": "nodepool1",
+			   "Nodecount": 1,
+			   "NodeCPU": 1, 
+			   "NodeRAM": 2,
+			   "NodeStorage": 3
+			},
+			{
+				"NodeName": "nodepool2",
+				"Nodecount": 1,
+				"NodeCPU": 2, 
+				"NodeRAM": 4,
+				"NodeStorage": 4
+			 },
+			 {
+				"NodeName": "nodepool3",
+				"Nodecount": 1,
+				"NodeCPU": 1, 
+				"NodeRAM": 1,
+				"NodeStorage": 2
+			 }  
+		 ]
+
+    }
+
+
+}

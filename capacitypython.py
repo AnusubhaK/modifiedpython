@@ -42,11 +42,11 @@ if __name__ == "__main__":
 
     # configuration of command line interface:
     parser = argparse.ArgumentParser(description='Script to extract inputs from webAPI')
-    parser.add_argument('-p', '--password',required=True, help="PASSWORD for web")
-    parser.add_argument('-n', '--nfid',required=True, help="input NFID")
-    parser.add_argument('-o', '--outjson',required=True, help="output result JSON file with full path from web")
+    parser.add_argument('-p', '--password',required=True, help="Password for web login")
+    parser.add_argument('-n', '--nfname',required=True, help="input NF name")
+    parser.add_argument('-o', '--outjson',required=True, help="output result JSON file to be saved from web")
     args = parser.parse_args()
     args_dict = vars(args)
 
-    fetchjsonfromweb(args.password, args.nfid, args.outjson)
+    fetchjsonfromweb(args.password, args.nfname, args.outjson)
     print("Script processing complete...")
